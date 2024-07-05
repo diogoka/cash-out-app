@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { ChangeEvent, Dispatch } from 'react';
 import { Input } from '@/components/ui/input';
 import { MoneyRowType } from '@/types/types';
 
 type Props = {
   rowData: MoneyRowType;
-  bankNote: number;
+  type: keyof MoneyRowType;
+  placeHolder: string;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
-const ValueInput = (props: Props) => {
+const ValueInput = ({ onChange, placeHolder, rowData, type }: Props) => {
   return (
     <Input
       type='number'
-      id=''
-      placeholder='value'
-      onChange={(event) => {
-        console.log(event.target.value);
-      }}
+      id={type}
+      placeholder={placeHolder}
+      value={rowData[type]}
+      onChange={onChange}
     />
   );
 };

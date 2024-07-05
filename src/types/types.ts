@@ -1,4 +1,4 @@
 export type MoneyRowType = {
-  bills: number;
-  amount: number;
+  bills: string;
+  amount: string;
 };

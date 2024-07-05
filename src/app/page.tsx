@@ -1,5 +1,5 @@
-import Header from '@/components/header'
-import MoneyRow from '@/components/moneyRow'
+import Header from '@/components/header';
+import MoneyRow from '@/components/moneyRow';
 
 export default function Home() {
   return (
@@ -7,5 +7,5 @@ export default function Home() {
       <Header />
       <MoneyRow bankNote={100} />
     </div>
-  )
+  );
 }
