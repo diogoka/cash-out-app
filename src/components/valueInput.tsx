@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Dispatch } from 'react';
+import React, { ChangeEvent } from 'react';
 import { Input } from '@/components/ui/input';
 import { MoneyRowType } from '@/types/types';
 

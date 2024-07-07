@@ -2,12 +2,14 @@
 import React, { ChangeEvent, useState } from 'react';
 import ValueInput from './valueInput';
 import { MoneyRowType } from '@/types/types';
+import { useCashStore } from '@/store/cashStore';
 
 type Props = {
   bankNote: number;
 };
 
 const MoneyRow = ({ bankNote }: Props) => {
+  const update = useCashStore((state) => state.update);
   const [rowData, setRowData] = useState<MoneyRowType>({
     bills: '',
     amount: '',
@@ -15,9 +17,13 @@ const MoneyRow = ({ bankNote }: Props) => {
 
   const calculateAmount = (value: string, type: keyof MoneyRowType) => {
     if (type === 'bills') {
-      setRowData(() => ({ bills: value, amount: `${bankNote * +value}` }));
+      const result = bankNote * +value;
+      setRowData(() => ({ bills: value, amount: `${result}` }));
+      update(bankNote, result);
     } else {
-      setRowData(() => ({ amount: value, bills: `${+value / bankNote}` }));
+      const result = +value / bankNote;
+      setRowData(() => ({ amount: value, bills: `${result}` }));
+      update(bankNote, result);
     }
   };
 
