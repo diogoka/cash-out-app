@@ -22,10 +22,10 @@ const TotalCash = (props: Props) => {
   const calculate = Object.values(object).reduce((acc, curr) => acc + curr);
 
   return (
-    <>
-      <div>Total Cash Component</div>
-      <h1>{total}</h1>
-    </>
+    <div className='flex'>
+      <h2>Total Cash Component</h2>
+      <h1>{total.toFixed(2)}</h1>
+    </div>
   );
 };
 

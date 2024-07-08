@@ -9,3 +9,8 @@ export type MoneyRowType = {
 export type RowsTotal = {
   [key: number]: number;
 };
+
+export type PropsCashOut = {
+  data: MoneyRowType;
+  setData: React.Dispatch<React.SetStateAction<MoneyRowType>>;
+};

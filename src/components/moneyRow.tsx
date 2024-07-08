@@ -18,11 +18,11 @@ const MoneyRow = ({ bankNote }: Props) => {
   const calculateAmount = (value: string, type: keyof MoneyRowType) => {
     if (type === 'bills') {
       const result = bankNote * +value;
-      setRowData(() => ({ bills: value, amount: `${result}` }));
+      setRowData(() => ({ bills: value, amount: `${result.toFixed(2)}` }));
       update(bankNote, result);
     } else {
       const result = +value / bankNote;
-      setRowData(() => ({ amount: value, bills: `${result}` }));
+      setRowData(() => ({ amount: value, bills: `${result.toFixed(2)}` }));
       update(bankNote, result);
     }
   };
