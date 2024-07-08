@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 const config = {
   darkMode: ['class'],
@@ -74,7 +74,22 @@ const config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
-} satisfies Config
+  plugins: [
+    require('tailwindcss-animate'),
+    function ({ addBase }: { addBase: (styles: Record<string, any>) => void }) {
+      addBase({
+        'input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button':
+          {
+            '@apply appearance-none': {},
+            margin: 0,
+          },
+        'input[type="number"]': {
+          '@apply appearance-none': {}, // For Webkit
+          '-moz-appearance': 'textfield', // For Firefox
+        },
+      });
+    },
+  ],
+} satisfies Config;
 
-export default config
+export default config;

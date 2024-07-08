@@ -1,5 +1,7 @@
 'use client';
 import React, { ChangeEvent, useState } from 'react';
+import { FaMoneyBillWave } from 'react-icons/fa';
+import { GiTwoCoins } from 'react-icons/gi';
 import ValueInput from './valueInput';
 import { MoneyRowType } from '@/types/types';
 import { useCashStore } from '@/store/cashStore';
@@ -28,13 +30,23 @@ const MoneyRow = ({ bankNote }: Props) => {
   };
 
   return (
-    <div className='flex items-center'>
-      <h3>{bankNote}</h3>
+    <div className='flex items-center gap-2 px-2 my-6'>
+      <div className='w-5'>
+        {bankNote >= 5 ? (
+          <FaMoneyBillWave size={20} />
+        ) : (
+          <GiTwoCoins size={20} />
+        )}
+      </div>
+
+      <div className='min-w-[33px]'>
+        <h3>{bankNote}</h3>
+      </div>
       <h3>X</h3>
       <ValueInput
         type='bills'
         rowData={rowData!}
-        placeHolder='Num of Bills'
+        placeHolder='Quantity'
         onChange={(event: ChangeEvent<HTMLInputElement>) =>
           calculateAmount(event.target.value, 'bills')
         }

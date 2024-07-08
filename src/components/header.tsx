@@ -1,9 +1,9 @@
-import React from 'react'
+const Header = () => {
+  return (
+    <div className='flex justify-center items-center bg-slate-900 text-white min-h-12'>
+      <h1 className='text-lg'>Cash-out App</h1>
+    </div>
+  );
+};
 
-type Props = {}
-
-const Header = (props: Props) => {
-  return <h1>Cash-out App</h1>
-}
-
-export default Header
+export default Header;

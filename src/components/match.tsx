@@ -4,21 +4,34 @@ import { useCashStore } from '@/store/cashStore';
 
 const Match = ({ data, setData }: PropsCashOut) => {
   const totalCash = useCashStore((state) => state.totalCash);
-
   const totalCashMinusFloat = (+data.floating! - totalCash).toFixed(2);
   const afterClover = +totalCashMinusFloat * -1 - +data.cloverTips!;
 
-  console.log('Cash Minus Float', totalCashMinusFloat);
-  console.log('Cash Minus Float Minus Clover', afterClover);
-  console.log('Net', data.net);
+  const result = (Math.abs(afterClover) - Math.abs(+data.net!)).toFixed(2);
+
+  let bgColor = 'bg-yellow-300';
+  let text = 'Even';
+  if (+result > 0) {
+    bgColor = 'bg-green-300';
+    text = 'Over';
+  } else if (+result < 0) {
+    bgColor = 'bg-red-300';
+    text = 'Short';
+  }
 
   return (
-    <>
-      <h2>Match</h2>
-      {afterClover > +data.net! ? <p>Red</p> : <p>Green</p>}
-      {(Math.abs(afterClover) - Math.abs(+data.net!)).toFixed(2)}
-    </>
+    <div className='min-w-14 flex-col items-center justify-center min-h-12'>
+      <h2 className='text-center mb-2'>{text}</h2>
+      <div
+        className={`${bgColor} px-6 py-2 min-w-40 rounded-md flex justify-center`}
+      >
+        {result}
+      </div>
+    </div>
   );
 };
+
+// short -> if is minutes than 0
+// over -> if is greater than 0
 
 export default Match;

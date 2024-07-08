@@ -10,9 +10,7 @@ import Match from '@/components/match';
 import { useState } from 'react';
 import { MoneyRowType } from '@/types/types';
 
-type Props = {};
-
-const CashOut = (props: Props) => {
+const CashOut = () => {
   const [data, setData] = useState<MoneyRowType>({
     cloverTips: '0',
     floating: '1000',
@@ -20,7 +18,6 @@ const CashOut = (props: Props) => {
   });
   return (
     <>
-      <Header />
       <MoneyTable />
       <TotalCash />
       <Floating data={data} setData={setData} />

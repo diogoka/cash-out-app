@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import { useCashStore } from '@/store/cashStore';
 import { RowsTotal } from '@/types/types';
+import { Input } from './ui/input';
 
 type Props = {};
 
@@ -19,12 +20,14 @@ const TotalCash = (props: Props) => {
     setTotalCash(result);
   }, [object]);
 
-  const calculate = Object.values(object).reduce((acc, curr) => acc + curr);
-
   return (
-    <div className='flex'>
-      <h2>Total Cash Component</h2>
-      <h1>{total.toFixed(2)}</h1>
+    <div className='flex items-center justify-end mt-6 mb-2'>
+      <h2 className='min-w-[90px] mr-1'>Total Cash:</h2>
+      <Input
+        disabled
+        value={total.toFixed(2)}
+        className='max-w-24 border-slate-950'
+      />
     </div>
   );
 };

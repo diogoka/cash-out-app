@@ -7,9 +7,16 @@ type Props = {
   type: keyof MoneyRowType;
   placeHolder: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  className?: string;
 };
 
-const ValueInput = ({ onChange, placeHolder, rowData, type }: Props) => {
+const ValueInput = ({
+  onChange,
+  placeHolder,
+  rowData,
+  type,
+  className,
+}: Props) => {
   return (
     <Input
       type='number'
@@ -17,6 +24,8 @@ const ValueInput = ({ onChange, placeHolder, rowData, type }: Props) => {
       placeholder={placeHolder}
       value={rowData[type]}
       onChange={onChange}
+      className={className}
+      min='0'
     />
   );
 };
