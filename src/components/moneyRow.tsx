@@ -1,5 +1,5 @@
 'use client';
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { FaMoneyBillWave } from 'react-icons/fa';
 import { GiTwoCoins } from 'react-icons/gi';
 import ValueInput from './valueInput';
@@ -12,9 +12,12 @@ type Props = {
 
 const MoneyRow = ({ bankNote }: Props) => {
   const update = useCashStore((state) => state.update);
+  const disabled = bankNote === 0 ? true : false;
+  const value: string = bankNote === 0 ? '177' : '';
+
   const [rowData, setRowData] = useState<MoneyRowType>({
     bills: '',
-    amount: '',
+    amount: value,
   });
 
   const calculateAmount = (value: string, type: keyof MoneyRowType) => {
@@ -23,11 +26,22 @@ const MoneyRow = ({ bankNote }: Props) => {
       setRowData(() => ({ bills: value, amount: `${result.toFixed(2)}` }));
       update(bankNote, result);
     } else {
-      const result = +value / bankNote;
-      setRowData(() => ({ amount: value, bills: `${result.toFixed(2)}` }));
-      update(bankNote, result);
+      if (bankNote === 0) {
+        setRowData(() => ({ amount: value, bills: '' }));
+        update(0, +value);
+      } else {
+        const result = +value / bankNote;
+        setRowData(() => ({ amount: value, bills: `${result.toFixed(2)}` }));
+        update(bankNote, result);
+      }
     }
   };
+
+  useEffect(() => {
+    if (bankNote === 0) {
+      update(0, 177);
+    }
+  }, []);
 
   return (
     <div className='flex items-center gap-2 px-2 my-6'>
@@ -40,7 +54,7 @@ const MoneyRow = ({ bankNote }: Props) => {
       </div>
 
       <div className='min-w-[33px]'>
-        <h3>{bankNote}</h3>
+        <h3>{bankNote === 0 ? 'RC' : bankNote}</h3>
       </div>
       <h3>X</h3>
       <ValueInput
@@ -50,6 +64,7 @@ const MoneyRow = ({ bankNote }: Props) => {
         onChange={(event: ChangeEvent<HTMLInputElement>) =>
           calculateAmount(event.target.value, 'bills')
         }
+        disabled={disabled}
       />
       <h3>=</h3>
       <h3>CAD</h3>

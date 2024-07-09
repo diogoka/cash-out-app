@@ -8,6 +8,7 @@ type Props = {
   placeHolder: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   className?: string;
+  disabled?: boolean;
 };
 
 const ValueInput = ({
@@ -16,6 +17,7 @@ const ValueInput = ({
   rowData,
   type,
   className,
+  disabled,
 }: Props) => {
   return (
     <Input
@@ -26,6 +28,7 @@ const ValueInput = ({
       onChange={onChange}
       className={className}
       min='0'
+      disabled={disabled}
     />
   );
 };
