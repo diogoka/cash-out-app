@@ -1,10 +1,15 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Work_Sans } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 
 const workSans = Work_Sans({ subsets: ['latin'] });
+
+export const viewport: Viewport = {
+  initialScale: 1,
+  width: 'device-width',
+};
 
 export const metadata: Metadata = {
   title: 'Cash-out App',
@@ -18,12 +23,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <head>
-        <meta
-          name='viewport'
-          content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
-        />
-      </head>
       <body className={workSans.className}>
         <Header />
         <main>{children}</main>

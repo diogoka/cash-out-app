@@ -1,6 +1,6 @@
 const Header = () => {
   return (
-    <div className='flex justify-center items-center bg-slate-900 text-white min-h-12 rounded-lg'>
+    <div className='flex justify-center items-center bg-slate-900 text-white min-h-16'>
       <h1 className='text-lg'>Cash-out App</h1>
     </div>
   );
