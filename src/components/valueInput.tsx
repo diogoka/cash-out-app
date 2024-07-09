@@ -31,7 +31,7 @@ const ValueInput = ({
       className={className}
       min='0'
       disabled={disabled}
-      pattern='-?[0-9]+(\.[0-9]+)?'
+      pattern={pattern ? pattern : '[0-9]*'}
     />
   );
 };
