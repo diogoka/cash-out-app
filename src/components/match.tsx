@@ -31,7 +31,4 @@ const Match = ({ data, setData }: PropsCashOut) => {
   );
 };
 
-// short -> if is minutes than 0
-// over -> if is greater than 0
-
 export default Match;

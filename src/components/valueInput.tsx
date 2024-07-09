@@ -29,6 +29,7 @@ const ValueInput = ({
       className={className}
       min='0'
       disabled={disabled}
+      pattern='[0-9]*'
     />
   );
 };
