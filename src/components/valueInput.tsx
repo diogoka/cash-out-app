@@ -9,6 +9,7 @@ type Props = {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   className?: string;
   disabled?: boolean;
+  pattern?: string;
 };
 
 const ValueInput = ({
@@ -18,6 +19,7 @@ const ValueInput = ({
   type,
   className,
   disabled,
+  pattern,
 }: Props) => {
   return (
     <Input
@@ -29,7 +31,7 @@ const ValueInput = ({
       className={className}
       min='0'
       disabled={disabled}
-      pattern='[0-9]*'
+      pattern={pattern ? pattern : '[0-9]*'}
     />
   );
 };

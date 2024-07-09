@@ -14,6 +14,7 @@ const NetDue = ({ data, setData }: PropsCashOut) => {
           setData((prevState) => ({ ...prevState, net: event.target.value }))
         }
         className='max-w-24'
+        pattern={'[+-]?[0-9]+'}
       />
     </div>
   );
