@@ -8,7 +8,7 @@ const Footer = (props: Props) => {
       <h5>
         Created by{' '}
         <a
-          href='https://diogoka-dev.onrender.com'
+          href='https://diogoka.dev'
           target='_blank'
           rel='noopener noreferrer'
           className='underline'
