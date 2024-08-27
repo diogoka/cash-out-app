@@ -23,6 +23,7 @@ const CloverTips = ({ data, setData }: PropsCashOut) => {
             }))
           }
           className='max-w-24'
+          pattern={'[+-]?[0-9]+'}
         />
       </div>
       <div className='flex items-center justify-end'>
